@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>jperfprobe</groupId>
+    <artifactId>jperfprobe-core</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>Java Performance Probes</name>
+    <inceptionYear>2004</inceptionYear>
+    <url>http://jperfprobe.sourceforge.net/</url>
+
+    <developers>
+        <developer>
+            <name>Tor-Erik Larsen</name>
+            <id>tor.erik.larsen</id>
+            <email>javadust@gmail.com</email>
+            <roles>
+                <role>Architect</role>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <!--
+       LICENSES ?
+    <issueManagement>
+    -->
+
+    <scm>
+        <connection>
+            scm:svn:http://jperfprobe.svn.sourceforge.net/svnroot/jperfprobe
+        </connection>
+        <developerConnection>
+            scm:svn:https://jperfprobe.svn.sourceforge.net/svnroot/jperfprobe
+        </developerConnection>
+        <url>http://jperfprobe.svn.sourceforge.net/svnroot/jperfprobe</url>
+    </scm>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.4</version>
+            <!--
+            <scope>test</scope>
+            -->
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <site>
+            <id>sourceforge</id>
+            <name>SourceForge Repository</name>
+            <url>sftp://web.sourceforge.net/htdocs</url>
+        </site>
+    </distributionManagement>
+
+    <issueManagement>
+        <system>Sourceforge</system>
+        <url>http://sourceforge.net/tracker/?atid=716453&amp;group_id=129989&amp;func=browse</url>
+    </issueManagement>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+                <version>1.0-beta-6</version>
+            </extension>
+        </extensions>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <encoding>ISO-8859-1</encoding>
+                    <compilerVersion>1.5</compilerVersion>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <check>
+                        <haltOnFailure>false</haltOnFailure>
+                        <regexes>
+                            <regex>
+                                <pattern>net.sf.jperfprobe.*</pattern>
+                                <branchRate>70</branchRate>
+                                <lineRate>70</lineRate>
+                            </regex>
+                            <!-- ??? -->
+                            <regex>
+                                <pattern>net.sf.jperfprobe.*</pattern>
+                                <branchRate>0</branchRate>
+                                <lineRate>0</lineRate>
+                            </regex>
+                        </regexes>
+                    </check>
+                    <instrumentation>
+                        <includes>
+                            <include>net/sf/jperfprobe/**/*.class</include>
+                        </includes>
+                    </instrumentation>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.10</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                    <outputEncoding>UTF-8</outputEncoding>
+                    <templateDirectory>src/site</templateDirectory>
+                    <template>site.vm</template>
+                </configuration>
+                <version>3.0</version>
+            </plugin>
+
+            <!--
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <targetJdk>1.5</targetJdk>
+                </configuration>
+            </plugin>
+                -->
+
+        </plugins>
+
+    </build>
+
+    <reporting>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <source>1.6</source>
+                    <encoding>ISO-8859-1</encoding>
+                    <minmemory>128m</minmemory>
+                    <maxmemory>512m</maxmemory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <version>2.0-beta-2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.10</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <targetJdk>1.5</targetJdk>
+                    <rulesets>
+                        <!-- Two rule sets that come bundled with PMD -->
+                        <ruleset>src/main/resources/pmdrulesets/basic.xml</ruleset>
+                        <ruleset>src/main/resources/pmdrulesets/braces.xml</ruleset>
+                        <ruleset>src/main/resources/pmdrulesets/naming.xml</ruleset>
+                        <ruleset>src/main/resources/pmdrulesets/unusedcode.xml</ruleset>
+                        <ruleset>src/main/resources/pmdrulesets/optimizations.xml</ruleset>
+                        <ruleset>src/main/resources/pmdrulesets/design.xml</ruleset>
+                        <ruleset>src/main/resources/pmdrulesets/strings.xml</ruleset>
+                        <ruleset>src/main/resources/pmdrulesets/imports.xml</ruleset>
+                    </rulesets>
+                    <linkXRef>true</linkXRef>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.3.2</version>
+                <!--
+                <version>2.0-SNAPSHOT</version>
+                -->
+            </plugin>
+
+
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.8</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.5.1</version>
+            </plugin>
+
+        </plugins>
+    </reporting>
+
+</project>

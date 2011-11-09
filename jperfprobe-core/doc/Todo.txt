@@ -1,0 +1,20 @@
+Todo
+-----
+
+- Serial/Deserial should be possible with the manager, serialize only the results
+- export results to csv file
+- Should be possible to cancel a probe which is running
+- Configure via properties
+- Number formatting?
+- Specific probe for counting, maybe some expressions
+- Counting per timeunit?
+- Create new maven site
+- Create Documentation, Examples
+- More thread testing
+- Release a version
+- License to build
+- reporting in build, cleanup
+- doxia plugins for build, snippets
+- implement possibility to set a mark in the manager
+- indentify the manager, so it is possible tp separate results from different runs
+

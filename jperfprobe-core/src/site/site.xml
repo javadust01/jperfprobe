@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JPerfProbe">
+
+    <publishDate format="dd.MM.yyyy HH:mm"/>
+
+    <body>
+        <head>
+            <meta name="verify-v1" content="fVj7IfLSvWtMsVRR+79VUAUJV+UtfcvVW71D8/+PG5E="/>
+            <meta name="description" content="Java Performance Probes, threadsafe high performance monitor api"/>
+            <meta name="keywords" content="jperfprobe, java, high, performance, tool, probe, instrument, api, benchmark, threadsafe, free, opensource, performance tuning, monitor, currentTimeMillis"/>
+        </head>
+
+        <menu name="Project">
+            <item name="Welcome" href="index.html"/>
+
+        </menu>
+
+        <menu name="Documentation">
+            <item name="Getting started" href="gettingstarted.html"/>
+            <item name="Faq" href="faq.html"/>
+            <item name="User Guide" href="userguide.html"/>
+            <item name="JavaDoc" href="/apidocs/index.html"/>
+        </menu>
+
+        <menu name="Community" >
+            <item name="SourceForge Home" href="http://sourceforge.net/projects/jperfprobe/"/>
+            <item name="Issue Tracking" href="/issue-tracking.html"/>
+            <item name="Forums" href="http://sourceforge.net/forum/forum.php?forum_id=441324"/>
+            <item name="Bugs" href="http://sourceforge.net/tracker/?group_id=129989&amp;atid=716453"/>
+            <item name="Feature Requests" href="http://sourceforge.net/tracker/?group_id=129989&amp;atid=716456"/>
+        </menu>
+
+        <menu ref="reports"/>
+    </body>
+</project>

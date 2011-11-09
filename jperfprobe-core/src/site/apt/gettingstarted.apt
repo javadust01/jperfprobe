@@ -1,0 +1,55 @@
+ ------
+ JperfProbe Getting started
+ ------
+ Tor-Erik Larsen
+ ------
+10.10.2008
+
+
+Getting started
+
+*Download Java Performance Probes:
+
+  The Java Performance Probes distribution can be downloaded from {{{http://sourceforge.net/projects/jperfprobe} SourceForge Java Performance Probes Download }}
+  Make sure that the jperfprobe.jar is in your classpath.
+
+*Simple usage:
+
+ Start and stop probe with static manager within same scope:
+
+-----
+ StaticProbeManager.start("MyProbe");
+ int i = 1;
+ i++;
+ StaticProbeManager.stop("MyProbe");
+-----
+
+ Print out probe result:
+
+-----
+ System.out.println(StaticProbeManager.toString("MyProbe"));
+-----
+
+ Result:
+ 
+-----
+ probe name=MyProbe, #samples=1 , average=26.0 , max=26.0  , min=26.0 , units=MICROS
+-----
+
+Start and stop probe with static manager in different scope:
+
+-----
+ StaticProbeManager.start("MyProbe");
+ doSomeStuff();
+
+ .
+ .
+ void someStuff() {
+   .
+   .
+   StaticProbeManager.stop("MyProbe");
+ }
+
+-----
+  
+

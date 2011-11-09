@@ -1,0 +1,50 @@
+                                    ------------------------------------------------------------------------------
+                                    Java Performance Probes, high performance monitor api
+                                    ------------------------------------------------------------------------------
+                                    Tor-Erik Larsen
+                                    ------------------------------------------------------------------------------
+                                    03.10.2007
+                                    ------------------------------------------------------------------------------
+
+
+Welcome to JPerfProbe.
+
+  JPerfProbe (Java performance probes), are used for timing "stuff" in java. It is possible to time
+  around codesections (same scope) or start the timer in one scope and stop it in another scope. 
+
+  Example of usage:
+
+-----
+ StaticProbeManager.start("MyProbe");
+ doSomeStuff();
+ StaticProbeManager.stop("MyProbe");
+-----
+
+ Print out probe result:
+
+-----
+ System.out.println(StaticProbeManager.toString("MyProbe"));
+-----
+
+ Result:
+
+-----
+ probe name=MyProbe, #samples=1 , average=26.0 , max=26.0  , min=26.0 , units=MICROS
+-----
+
+  The probes can be enabled or disabled. In a production system they can stay in the code disabled, and be
+  enabled by need. If enabled they does not cause overhead, it just a method call and a if statement.
+
+  The probes are handy for measuring performance in development and in production, and could be used for
+  documenting timing requirements.
+
+  Features:
+  - measure time in nano seconds
+  - presentation in nanos, micros, millis
+  - probe manager both static and instance
+  - record variable number of samples
+  - supports multithreaded probes, also single probes
+  - calculates min/max and average
+
+
+  
